@@ -4,6 +4,8 @@
 
  * Printer - Epson TM-T20III
 	* https://www.amazon.com/dp/B07YLSTMCX
+ * High quality thermal paper
+ 	* https://www.amazon.com/dp/B0CM7NWNBM?ref=fed_asin_title
  * Pi - Raspberry Pi 4 (Running Raspberry Pi OS Lite)
 	* https://www.adafruit.com/product/4295
  * Button
