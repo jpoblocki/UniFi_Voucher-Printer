@@ -1,0 +1,72 @@
+Allow USB Permissions:
+lsusb
+
+sudo nano /etc/udev/rules.d/99-escpos.rules
+
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="04b8", ATTRS{idProduct}=="0e28", MODE="0666", GROUP="users"
+
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
+#########################################################################################
+
+Mount USB:
+List Drives: sudo blkid
+sudo mkdir /mnt/volume
+sudo mount /dev/sda1 /mnt/volume
+sudo umount /mnt/volume
+
+#########################################################################################
+
+Copy USB:
+cp /mnt/volume/PrintVoucher /home/pi_admin/ -r
+
+#########################################################################################
+
+Create Virtual Environment:
+cd /home/pi_admin/PrintVoucher/
+python -m venv venv
+
+#########################################################################################
+
+Install Requirements:
+venv/bin/python3 -m pip install -r requirements.txt
+
+#########################################################################################
+
+Run Python Script Manually:
+/home/pi_admin/PrintVoucher/venv/bin/python3 /home/pi_admin/PrintVoucher/UnifiAPI.py
+
+#########################################################################################
+
+Set Python Script to Run as Service:
+sudo nano /etc/systemd/system/print_voucher.service
+
+[Unit]
+Description=Print Voucher Script Service
+After=network.target
+
+[Service]
+ExecStart=/home/pi_admin/PrintVoucher/venv/bin/python3 /home/pi_admin/PrintVoucher/UnifiAPI.py
+WorkingDirectory=/home/pi_admin/PrintVoucher
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi_admin
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl enable print_voucher.service
+sudo systemctl start print_voucher.service
+
+#########################################################################################
+
+Check Service Status:
+sudo systemctl status print_voucher.service
+
+#########################################################################################
+
+Shutdown Pi:
+sudo poweroff

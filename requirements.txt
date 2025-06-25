@@ -1,0 +1,6 @@
+requests
+pytz
+pillow
+python-escpos[usb]
+lgpio
+gpiozero
