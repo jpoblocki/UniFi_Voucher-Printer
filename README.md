@@ -1,1 +1,1 @@
-# UniFi_Voucher-Printer
+# UniFi - Voucher Receipt Printer
