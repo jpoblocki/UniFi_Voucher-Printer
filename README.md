@@ -12,3 +12,8 @@
 	* https://www.adafruit.com/product/560
  * Step Down Regulator (to power Pi from printer power supply)
  	* https://www.pololu.com/product/4892
+
+
+**Notes**
+
+* This is written to work with a self-hosted conroller. The API calls will change if using a controller running on a UniFi Gateway.
