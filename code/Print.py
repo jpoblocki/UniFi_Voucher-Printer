@@ -58,16 +58,16 @@ def printFooter (footerText):
 
     p.image(tmpImage)
 
-def printVoucher (vLogo, vNetworkName, vNetowrkPassword, vVoucher, vNote, vExpireNote):
+def printVoucher (vLogo, vNetworkName, vNetworkPassword, vVoucher, vNote, vExpireNote):
     p.image(vLogo)
     printHeader()
     printTitle("Network Name")
     printInfo(vNetworkName)
     printTitle("Network Password")
-    printInfo(vNetowrkPassword)
+    printInfo(vNetworkPassword)
     printTitle("Voucher Code")
     printInfo(vVoucher)
-    p.qr(f"WIFI:S:{vNetworkName};T:WPA;P:{vNetowrkPassword};;",size=6)
+    p.qr(f"WIFI:S:{vNetworkName};T:WPA;P:{vNetworkPassword};;",size=6)
     printFooter("Valid for 24h after first use.")
     printFooter(vNote)
     p.ln(1)
